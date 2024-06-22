@@ -77,6 +77,14 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Enemy enemyComponent = GetComponent<Enemy>();
+
+            // shoot raycast to check if the enemy collides with a wall
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, enemyComponent.GetDirectionToMove(), (transform.localScale.x / 2 + .2f), groundLayer);
+            Debug.DrawRay(transform.position, enemyComponent.GetDirectionToMove(), Color.red);
+            if (hit.collider != null)
+            {
+                enemyComponent.SetDirectionToMove(-enemyComponent.GetDirectionToMove());
+            }
             velocity += (enemyComponent.GetDirectionToMove() * m_Speed * Time.deltaTime);
         }
 

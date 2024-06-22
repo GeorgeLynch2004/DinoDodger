@@ -135,6 +135,9 @@ MonoBehaviour:
   directionToMove: {x: 0, y: 0}
   movementSpeed: 2
   movementOverrided: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &7457734456224434025
 MonoBehaviour:
   m_ObjectHideFlags: 0

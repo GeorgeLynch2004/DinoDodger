@@ -15784,8 +15784,8 @@ MonoBehaviour:
   maxLevelScores:
   - 1
   - 128
+  - 192
   - 256
-  - 512
   gameStarted: 0
   UIManager: {fileID: 0}
 --- !u!1001 &8215805064942185050

@@ -58,4 +58,9 @@ public class Enemy : MonoBehaviour
     {
         return directionToMove;
     }
+
+    public void SetDirectionToMove(Vector2 direction)
+    {
+        directionToMove = direction;
+    }
 }
