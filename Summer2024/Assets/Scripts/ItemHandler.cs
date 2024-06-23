@@ -27,6 +27,12 @@ public class ItemHandler : MonoBehaviour
             {
                 AttachItem(itemsAround[0]);
                 itemsAround.RemoveAt(0);
+                
+                if (itemInHand.GetComponent<Gun>() != null && itemInHand.GetComponent<Gun>().name != "Medkit")
+                {
+                    SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+                    soundManager.PlaySound("Gun Equip");
+                }
             }
             else
             {

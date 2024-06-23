@@ -21,11 +21,11 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (timer < 1)
+        if (timer < .5f)
         {
             title.text = "DINO DODGER 300";
         }
-        else if (timer > 1 && timer < 2)
+        else if (timer > .5f && timer < 1)
         {
             title.text = "";
         }

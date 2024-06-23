@@ -10,6 +10,8 @@ public class LootCrate : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Instantiate(crateContents, transform.position, transform.rotation);
+            SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySound("Crate Break");
             Destroy(gameObject);
         }
     }

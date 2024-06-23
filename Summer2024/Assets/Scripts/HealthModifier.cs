@@ -13,6 +13,8 @@ public class HealthModifier : MonoBehaviour
         if (other.gameObject.GetComponent<HealthSystem>() != null)
         {
             other.gameObject.GetComponent<HealthSystem>().setCurrentHealth(other.gameObject.GetComponent<HealthSystem>().getCurrentHealth() + modifierAmount);
+            SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySound("Damage");
         }
     }
 
@@ -22,6 +24,8 @@ public class HealthModifier : MonoBehaviour
         if (other.gameObject.GetComponent<HealthSystem>() != null)
         {
             other.gameObject.GetComponent<HealthSystem>().setCurrentHealth(other.gameObject.GetComponent<HealthSystem>().getCurrentHealth() + modifierAmount);
+            SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySound("Damage");
         }
     }
 }

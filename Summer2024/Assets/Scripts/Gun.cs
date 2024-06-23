@@ -23,6 +23,8 @@ public class Gun : MonoBehaviour
         if (Input.GetKey(KeyCode.Return) && canShoot && ammo > 0 && transform.parent != null)
         {
             Instantiate(bullet, barrel.position, barrel.rotation);
+            SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySound("Gunshot");
             if (animator != null){animator.SetTrigger("Fire");}
             ammo--;
             StartCoroutine(reload());

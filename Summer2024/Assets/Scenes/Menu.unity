@@ -4548,6 +4548,92 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1000896979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1000896981}
+  - component: {fileID: 1000896980}
+  - component: {fileID: 1000896982}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1000896980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000896979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2178ecd4f03b544b3c83f67c346915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundObjectPrefab: {fileID: 942793880536701861, guid: 9d8c70ea3ca3ed94cbbbdef1242d15a3, type: 3}
+--- !u!4 &1000896981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000896979}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1000896982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000896979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d72e9dba8c16e34ca7c98d186b54ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElementDescriptions:
+    _serializedList:
+    - Key: Player Dead
+      Value: {fileID: 8300000, guid: 17af94aad63ed8448a26f133cef4a803, type: 3}
+    - Key: Damage
+      Value: {fileID: 8300000, guid: 06cd27c89418a3c4b9bf176865e4275e, type: 3}
+    - Key: Gun Equip
+      Value: {fileID: 8300000, guid: 964a5eec881020546b2d92344ae8e913, type: 3}
+    - Key: Roar
+      Value: {fileID: 8300000, guid: cc48f92230ac5344da4ba11541b2dbf9, type: 3}
+    - Key: Gunshot
+      Value: {fileID: 8300000, guid: 83f4b8c7d7523ee438326db0e20bd3f2, type: 3}
+    - Key: Point Collect
+      Value: {fileID: 8300000, guid: c25a6fffe5003434383f40dfb445d1e5, type: 3}
+    - Key: Heal
+      Value: {fileID: 8300000, guid: 2cc3f24bd3f267a468f0e690ab06c7d3, type: 3}
+    - Key: Footstep
+      Value: {fileID: 8300000, guid: ad08e967a6d03e44296c6da51697e446, type: 3}
+    - Key: Level 3 Clear
+      Value: {fileID: 8300000, guid: 6cb04a663ca017d4687cf3531a205e29, type: 3}
+    - Key: Level 2 Clear
+      Value: {fileID: 8300000, guid: d6a44572dfc34664b9f0507cdd6df620, type: 3}
+    - Key: Level 1 Clear
+      Value: {fileID: 8300000, guid: a19b726449ad8034c931452889a15d89, type: 3}
+    - Key: Crate Break
+      Value: {fileID: 8300000, guid: e1bdfa46d3f9211428ea5b56dc4b2135, type: 3}
+    - Key: Button Sound
+      Value: {fileID: 8300000, guid: 2f1946c67431a41458658dd1c04a4706, type: 3}
 --- !u!1 &1208822802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5505,3 +5591,4 @@ SceneRoots:
   - {fileID: 1208822803}
   - {fileID: 84150835}
   - {fileID: 1739830612}
+  - {fileID: 1000896981}

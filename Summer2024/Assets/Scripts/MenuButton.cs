@@ -11,17 +11,20 @@ public class PlayButton : MonoBehaviour, IPointerExitHandler, IPointerEnterHandl
     private TextMeshProUGUI text;
     [SerializeField] private Color defaultColor;
     [SerializeField] private Color changedColor;
+    private SoundManager soundManager;
 
     void Start()
     {
         pb = GetComponent<Button>();
         text = gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         defaultColor = text.color;
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         text.color = changedColor;
+        soundManager.PlaySound("Button Sound");
     }
 
     public void OnPointerExit(PointerEventData eventData)

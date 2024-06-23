@@ -33,6 +33,8 @@ public class EnemySpawner : MonoBehaviour
             int randomIndex = Random.Range(0, spawnableObjects.Count-1);
 
             Instantiate(spawnableObjects[randomIndex], transform.position, transform.rotation);
+            SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySound("Roar");
 
             canSpawn = true;
         }
