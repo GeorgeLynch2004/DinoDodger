@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator PlayerDied()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameStarted = false;
         Instantiate(player, spawnPoint.position, quaternion.identity);
         Destroy(gameObject);

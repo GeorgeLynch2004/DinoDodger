@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D m_Rigidbody2D;
     [SerializeField] private float m_Speed;
+    [SerializeField] private float m_SpeedVariationRange;
     [SerializeField] private float m_MaxSpeedX;
     [SerializeField] private float m_MaxSpeedY;
     [SerializeField] private float m_JumpForce;
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         healthSystem = GetComponent<HealthSystem>();
+        m_MaxSpeedX = Random.Range(m_MaxSpeedX - m_SpeedVariationRange, m_Speed + m_SpeedVariationRange);
     }
 
 
@@ -39,8 +41,6 @@ public class PlayerMovement : MonoBehaviour
         {
             m_Rigidbody2D.gravityScale = 1;
         }
-
-        updateTransform();
 
         m_IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
                 velocity += (Vector2.right * m_Speed * Time.deltaTime);
                 m_LastDirection = Vector2.right;
             }
+            updateTransform(m_LastDirection);
         }
         else
         {
@@ -86,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
                 enemyComponent.SetDirectionToMove(-enemyComponent.GetDirectionToMove());
             }
             velocity += (enemyComponent.GetDirectionToMove() * m_Speed * Time.deltaTime);
+            updateTransform(enemyComponent.GetDirectionToMove());
         }
 
         velocity.x = Mathf.Clamp(velocity.x, -m_MaxSpeedX, m_MaxSpeedX);
@@ -104,15 +106,15 @@ public class PlayerMovement : MonoBehaviour
         return m_LastDirection;
     }
 
-    public void updateTransform()
+    public void updateTransform(Vector2 direction)
     {
         Vector3 rot = transform.localEulerAngles;
 
-        if (m_LastDirection == Vector2.right)
+        if (direction == Vector2.right)
         {
             rot.y = 0;
         }
-        if (m_LastDirection == -Vector2.right)
+        if (direction == -Vector2.right)
         {
             rot.y = -180;
         }

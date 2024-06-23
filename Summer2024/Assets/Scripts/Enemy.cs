@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
         else
         {
             directionToMove = -Vector2.right;
-            scale.x = -scale.x;
         }
 
         transform.localScale = scale;

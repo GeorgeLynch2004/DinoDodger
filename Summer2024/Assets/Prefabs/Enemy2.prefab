@@ -135,9 +135,6 @@ MonoBehaviour:
   directionToMove: {x: 0, y: 0}
   movementSpeed: 2
   movementOverrided: 1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &7457734456224434025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Rigidbody2D: {fileID: 0}
   m_Speed: 100
+  m_SpeedVariationRange: 5
   m_MaxSpeedX: 14
   m_MaxSpeedY: 20
   m_JumpForce: 1800
