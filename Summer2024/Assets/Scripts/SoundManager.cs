@@ -25,7 +25,6 @@ public class SoundManager : MonoBehaviour
 
         if (soundToPlay != null)
         {
-            Debug.Log(soundToPlay);
             // create a new sound game object that plays the sound and then kills itself.
             GameObject newSoundObject = Instantiate(soundObjectPrefab, Vector2.zero, Quaternion.identity);
             AudioSource audioSource = newSoundObject.GetComponent<AudioSource>();

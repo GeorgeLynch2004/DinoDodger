@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool gameStarted;
     [SerializeField] private GameObject UIManager;
     private bool resetFlag;
+    private bool resetFlag2;
 
     private void Start() 
     {
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         isRunning = false;
         gameStarted = false;
         resetFlag = true;
+        resetFlag2 = true;
     }
 
     private void Update() 
@@ -36,7 +38,6 @@ public class GameManager : MonoBehaviour
         UIManager = GameObject.Find("UIManager");
 
         CheckForPause();
-
     }
 
     private void CheckForPause()
@@ -74,16 +75,49 @@ public class GameManager : MonoBehaviour
             // try progressing to next level
             try
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                if (resetFlag2) 
+                {
+                    StartCoroutine(LevelComplete());
+                    resetFlag2 = false;
+                }
             }
             catch (Exception ex)
             {
                 // if there is no next level catch and restart the game
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("Menu");
             }
-            Destroy(gameObject);
-            Destroy(UIManager.gameObject);
         }
+    }
+
+    private IEnumerator LevelComplete()
+    {
+        isRunning = false;
+        SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 1:
+                soundManager.PlaySound("Level 1 Clear");
+                break;
+            case 2:
+                soundManager.PlaySound("Level 2 Clear");
+                break;
+            case 3: 
+                soundManager.PlaySound("Level 3 Clear");
+                break;
+            default:
+                Debug.Log("This shit make no sense");
+                break;
+        }
+
+        yield return new WaitForSeconds(2);
+
+        Debug.Log("This section is being executed");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        resetFlag2 = true;
+
+        Destroy(gameObject);
+        Destroy(UIManager.gameObject);
     }
 
     private IEnumerator resetlevel()
