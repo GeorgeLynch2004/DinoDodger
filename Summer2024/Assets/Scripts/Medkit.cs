@@ -7,7 +7,7 @@ public class Medkit : MonoBehaviour
     [SerializeField] private float health;
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return) && transform.parent != null)
+        if (Input.GetKey(KeyCode.X) && transform.parent != null)
         {
             HealthSystem healthSystem = transform.parent.parent.GetComponent<HealthSystem>();
             SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();

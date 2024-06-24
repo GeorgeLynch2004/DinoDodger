@@ -12449,7 +12449,7 @@ MonoBehaviour:
   - {fileID: 2569375797982039541, guid: 9b68f4b8f7b742a4baf88fdc97e0afc6, type: 3}
   - {fileID: 2569375797982039541, guid: 9b68f4b8f7b742a4baf88fdc97e0afc6, type: 3}
   - {fileID: 2569375797982039541, guid: 9b68f4b8f7b742a4baf88fdc97e0afc6, type: 3}
-  timeBetweenSpawns: 4
+  timeBetweenSpawns: 11
   canSpawn: 1
 --- !u!1001 &1732080813
 PrefabInstance:
@@ -12648,7 +12648,7 @@ MonoBehaviour:
   - {fileID: 2569375797982039541, guid: 9b68f4b8f7b742a4baf88fdc97e0afc6, type: 3}
   - {fileID: 2569375797982039541, guid: 9b68f4b8f7b742a4baf88fdc97e0afc6, type: 3}
   - {fileID: 2569375797982039541, guid: 9b68f4b8f7b742a4baf88fdc97e0afc6, type: 3}
-  timeBetweenSpawns: 3
+  timeBetweenSpawns: 9
   canSpawn: 1
 --- !u!4 &1775236961
 Transform:

@@ -21,7 +21,7 @@ public class ItemHandler : MonoBehaviour
 
     private void InputMethod()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (!handFull && itemsAround.Count > 0)
             {

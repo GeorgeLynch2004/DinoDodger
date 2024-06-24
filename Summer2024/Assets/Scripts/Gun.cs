@@ -20,7 +20,7 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return) && canShoot && ammo > 0 && transform.parent != null)
+        if (Input.GetKey(KeyCode.X) && canShoot && ammo > 0 && transform.parent != null)
         {
             Instantiate(bullet, barrel.position, barrel.rotation);
             SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();

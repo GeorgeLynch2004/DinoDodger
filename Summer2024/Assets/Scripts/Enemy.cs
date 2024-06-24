@@ -29,6 +29,12 @@ public class Enemy : MonoBehaviour
     {
         establishDirectionToMove();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (movementOverrided)
+        {
+            SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySound("Roar");    
+        }
+        
     }
 
     private void Update()

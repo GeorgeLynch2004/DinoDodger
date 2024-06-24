@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float[] maxLevelScores;
     [SerializeField] private bool gameStarted;
     [SerializeField] private GameObject UIManager;
+    private bool resetFlag;
 
     private void Start() 
     {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         Instantiate(player, spawnPoint.position, quaternion.identity);
         isRunning = false;
         gameStarted = false;
+        resetFlag = true;
     }
 
     private void Update() 
@@ -58,7 +60,12 @@ public class GameManager : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Point").Length == 0)
         {
-            StartCoroutine(resetlevel());
+            if (resetFlag) 
+            {
+                StartCoroutine(resetlevel());
+                resetFlag = false;
+            }
+            
         }
 
         // if max points in the level is reached then the next level is loaded
@@ -111,7 +118,13 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);  
 
+        SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager.PlaySound("Game Countdown");
+
+        yield return new WaitForSeconds(3);
+
         isRunning = true;
+        resetFlag = true;
     }
 
     public bool GameRunning(){return isRunning;}

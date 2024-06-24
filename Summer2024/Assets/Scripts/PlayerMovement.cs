@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private GameManager gameManager;
     private HealthSystem healthSystem;
     [SerializeField] private bool movementPermitted;
+    private bool footstepAvailable;
     
 
     private void Start()
@@ -27,20 +28,25 @@ public class PlayerMovement : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         healthSystem = GetComponent<HealthSystem>();
         m_MaxSpeedX = Random.Range(m_MaxSpeedX - m_SpeedVariationRange, m_Speed + m_SpeedVariationRange);
+        footstepAvailable = true;
     }
 
 
     void FixedUpdate()
     {
-        if (!gameManager.GameRunning()) 
+        if (gameManager != null)
         {
-            m_Rigidbody2D.gravityScale = 0; 
-            return;
+            if (!gameManager.GameRunning()) 
+            {
+                m_Rigidbody2D.gravityScale = 0; 
+                return;
+            }
+            else 
+            {
+                m_Rigidbody2D.gravityScale = 1;
+            }
         }
-        else 
-        {
-            m_Rigidbody2D.gravityScale = 1;
-        }
+        
 
         m_IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
@@ -53,25 +59,29 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementPermitted)
         {
-            if (Input.GetKey(KeyCode.W) && m_IsGrounded)
+            if (Input.GetKey(KeyCode.UpArrow) && m_IsGrounded)
             {
                 velocity += (Vector2.up * m_JumpForce * Time.deltaTime);
                 m_LastDirection = Vector2.up;
+                SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+                soundManager.PlaySound("Jump");
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.DownArrow))
             {
                 velocity -= (Vector2.up * m_Speed * Time.deltaTime);
                 m_LastDirection = -Vector2.up;
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 velocity -= (Vector2.right * m_Speed * Time.deltaTime);
                 m_LastDirection = -Vector2.right;
+                if (footstepAvailable && m_IsGrounded) StartCoroutine(footstep());
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 velocity += (Vector2.right * m_Speed * Time.deltaTime);
                 m_LastDirection = Vector2.right;
+                if (footstepAvailable && m_IsGrounded) StartCoroutine(footstep());
             }
             updateTransform(m_LastDirection);
         }
@@ -125,6 +135,15 @@ public class PlayerMovement : MonoBehaviour
     public bool GetIsGrounded()
     {
         return m_IsGrounded;
+    }
+
+    private IEnumerator footstep()
+    {
+        footstepAvailable = false;
+        SoundManager soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager.PlaySound("Footstep");
+        yield return new WaitForSeconds(.18f);
+        footstepAvailable = true;
     }
 
 }

@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour
     {
         if (timer < .5f)
         {
-            title.text = "DINO DODGER 300";
+            title.text = "DINO DODGER 3000";
         }
         else if (timer > .5f && timer < 1)
         {
