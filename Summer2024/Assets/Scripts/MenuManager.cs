@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI controlsButton;
     [SerializeField] private Animator animator;
     [SerializeField] private bool onMainPage;
+    [SerializeField] private GameObject[] controlsGraphics;
     private float timer;
 
     private void Start()
@@ -44,14 +45,20 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleBetweenControlsScreen()
     {
-        onMainPage = !onMainPage;
         if (onMainPage)
         {
-            animator.SetTrigger("MainPage");
+            foreach (GameObject graphic in controlsGraphics)
+            {
+                graphic.SetActive(!graphic.activeInHierarchy);
+            }
         }
         else
         {
-            animator.SetTrigger("ControlsPage");
+            foreach (GameObject graphic in controlsGraphics)
+            {
+                graphic.SetActive(!graphic.activeInHierarchy);
+            }
         }
+        onMainPage = !onMainPage;
     }
 }

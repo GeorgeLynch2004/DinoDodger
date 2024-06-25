@@ -15783,9 +15783,9 @@ MonoBehaviour:
   currentLevelIndex: 0
   maxLevelScores:
   - 1
-  - 128
-  - 192
-  - 256
+  - 64
+  - 70
+  - 109
   gameStarted: 0
   UIManager: {fileID: 0}
 --- !u!1001 &8215805064942185050
